@@ -1,0 +1,62 @@
+#chatNeha {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 40px;
+    left: 30px;
+    z-index: 999;
+}
+
+#cNote .close {
+    position: relative;
+    top: -3px;
+}
+
+
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+}
+
+#cNote {
+    display: none;
+    bottom: 110px;
+    max-width: 250px;
+	width:100%;
+    padding: 15px;
+    font-size: 14px;
+    text-align: left;
+    background: #fff;
+    min-height: 20px;
+    box-shadow: 1px 1px 10px #999;
+    box-sizing: border-box;
+    z-index: 999;
+    background-size: 70px;
+    line-height: 1.4;
+    color: #485256;
+    position: fixed;
+    left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-body form{
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.modal-body form input[type="color"]{
+    width: 100%;
+    max-width: 100px;
+    padding: 0;
+    background: #000;
+}
