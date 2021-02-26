@@ -33,8 +33,6 @@
             id INT(9) NOT NULL AUTO_INCREMENT,
             image_color VARCHAR(40) NOT NULL,
             image_link VARCHAR(256) NOT NULL,
-            selectTimeFrom INT(5)  NULL,
-            selectTimeTo INT(5)  NULL,
             PRIMARY KEY id (id)
         );";
     $wpdb->query($structure);
@@ -93,7 +91,7 @@
                         <div class="input-group-prepend">
                            <!--  <span class="input-group-text"></span> -->
                         </div>
-                        <input type="text" class="form-control" aria-describedby="inputGroupPrepend" id="image_link" name ="image_link" value="<?php echo  esc_attr( $image_link ); ?>" required >
+                        <input type="text" class="form-control" aria-describedby="inputGroupPrepend" id="image_link" name ="image_link" value="<?php echo  esc_url( $image_link ); ?>" required >
 						
                     </div>
                 </div>
@@ -108,7 +106,7 @@
                     </div>
                 </div>
             </div>
-			 <input type="hidden" name ="hidden_id" value="<?php echo esc_attr( $id ); ?>" >
+			      <input type="hidden" name ="hidden_id" value="<?php echo esc_attr( $id ); ?>" >
             <button class="btn btn-primary col-3  d-block mx-auto" type="submit" name="editsave" value="Generate Widget"> Generate Widget </button>
         </form>
         </div>
@@ -127,8 +125,8 @@
       $table_name, 
       array( 
           
-          'image_link' => sanitize_text_field($_POST['image_link']),
-          'image_color' => sanitize_text_field($_POST['image_color']),
+          'image_link' => esc_url_raw($_POST['image_link']),
+          'image_color' => sanitize_hex_color($_POST['image_color']),
           
       ), 
       array(
@@ -143,7 +141,7 @@
   }else{
 
 
-    $insert_query =  $wpdb->prepare(" INSERT INTO ".$table_name."(image_color,image_link,	selectTimeFrom,	selectTimeTo) values ('".sanitize_text_field($_POST['image_color'])."','".sanitize_text_field($_POST['image_link'])."','".sanitize_text_field($_POST['selectTimeFrom'])."','".sanitize_text_field($_POST['selectTimeTo'])."') "); 
+    $insert_query =  $wpdb->prepare(" INSERT INTO ".$table_name."(image_color,image_link) values ('".sanitize_hex_color($_POST['image_color'])."','".esc_url_raw($_POST['image_link'])."') "); 
     $insertResult = $wpdb->query($insert_query);
     echo "<script> alert('Details have been Added'); </script>";
     echo "<script>location.reload(); </script>";
@@ -175,7 +173,7 @@
                   window.onload = function() {
                   document.body.innerHTML = document.body.innerHTML + "<p id= \'abc\'></p>";
                   var widget = `<div style="position: fixed; bottom: 40px; right: 40px;">
-                  <a href= "'.esc_attr( $link ).'" target=
+                  <a href= "'.esc_url( $link ).'" target=
                   "_blank" style="text-decoration: none;">
                       <div class="live-video-icon" style="background:'.esc_attr( $color ).'; width: 80px; height: 80px; border-radius:17px; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; box-shadow:6px 6px 30px rgba(0, 0, 0, 0.16)">
                       <svg style="margin-right:-5px" xmlns="http://www.w3.org/2000/svg" width="43" height="31" viewBox="0 0 130 91.829">
