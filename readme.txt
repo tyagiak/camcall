@@ -46,7 +46,7 @@ You can add video/chat link from admin panel.
 
 = How to change image color? =
 
-goo admin panel and select desired color and tap on generate widget.
+goto admin panel and select desired color and tap on generate widget.
 
 == Screenshots ==
 
